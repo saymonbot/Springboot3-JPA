@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.saymon.course.entities.Order;
 import com.saymon.course.services.OrderService;
 
-
-
 @RestController
 @RequestMapping(value = "/orders")
 public class OrderResource {
@@ -32,5 +30,4 @@ public class OrderResource {
 		Order obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
 }

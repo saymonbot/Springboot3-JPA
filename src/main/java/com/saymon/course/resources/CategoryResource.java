@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.saymon.course.entities.Category;
 import com.saymon.course.services.CategoryService;
 
-
-
 @RestController
 @RequestMapping(value = "/categories")
 public class CategoryResource {
@@ -32,5 +30,4 @@ public class CategoryResource {
 		Category obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
 }

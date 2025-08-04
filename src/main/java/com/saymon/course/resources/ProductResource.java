@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.saymon.course.entities.Product;
 import com.saymon.course.services.ProductService;
 
-
-
 @RestController
 @RequestMapping(value = "/products")
 public class ProductResource {
@@ -32,5 +30,4 @@ public class ProductResource {
 		Product obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
 }
