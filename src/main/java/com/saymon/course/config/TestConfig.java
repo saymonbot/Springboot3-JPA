@@ -47,44 +47,44 @@ public class TestConfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers"); 
 		
-		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
-		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
-		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
-		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
-		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+		Product prod1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Product prod2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Product prod3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Product prod4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Product prod5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
 		
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
-		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		productRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5));
 		
-		p1.getCategories().add(cat2);
-		p2.getCategories().add(cat3);
-		p2.getCategories().add(cat1);
-		p3.getCategories().add(cat3);
-		p4.getCategories().add(cat3);
-		p5.getCategories().add(cat2);
+		prod1.getCategories().add(cat2);
+		prod2.getCategories().add(cat3);
+		prod2.getCategories().add(cat1);
+		prod3.getCategories().add(cat3);
+		prod4.getCategories().add(cat3);
+		prod5.getCategories().add(cat2);
 		
-		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		productRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5));
 		
-		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
-		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
+		User user1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
+		User user2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 		
-		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
-		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMMENT, u2);
-		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMMENT, u1); 
+		Order order1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, user1);
+		Order order2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMMENT, user2);
+		Order order3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMMENT, user1); 
 		
-		userRepository.saveAll(Arrays.asList(u1, u2));
-		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+		userRepository.saveAll(Arrays.asList(user1, user2));
+		orderRepository.saveAll(Arrays.asList(order1, order2, order3));
 		
-		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
-		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
-		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
-		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+		OrderItem orderItem1 = new OrderItem(order1, prod1, 2, prod1.getPrice());
+		OrderItem orderItem2 = new OrderItem(order1, prod3, 1, prod3.getPrice());
+		OrderItem orderItem3 = new OrderItem(order2, prod3, 2, prod3.getPrice());
+		OrderItem orderItem4 = new OrderItem(order3, prod5, 2, prod5.getPrice());
 		
-		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		orderItemRepository.saveAll(Arrays.asList(I, orderItem2, orderItem3, orderItem4));
 		
-		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
-		o1.setPayment(pay1);
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), order1);
+		order1.setPayment(pay1);
 		
-		orderRepository.save(o1);
+		orderRepository.save(order1);
 	}
 }
